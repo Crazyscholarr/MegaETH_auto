@@ -1,0 +1,135 @@
+# --------------------------- #
+# PHẦN CÀI ĐẶT
+# --------------------------- #
+SETTINGS:
+    # số luồng chạy đồng thời
+    THREADS: 5
+
+    # số lần thử lại cho BẤT KỲ hành động nào
+    ATTEMPTS: 5
+    
+    # phạm vi tài khoản.
+    # MẶC ĐỊNH: [0, 0] - tất cả tài khoản
+    # [3, 5] - chỉ tài khoản 3, 4, 5
+    # [7, 7] - chỉ tài khoản 7
+    ACCOUNTS_RANGE: [0, 0]
+    
+    # CHỈ HOẠT ĐỘNG NẾU ACCOUNTS_RANGE LÀ [0, 0]
+    # các tài khoản cụ thể để sử dụng.
+    # MẶC ĐỊNH: [] - tất cả tài khoản
+    # Ví dụ: [1, 4, 6] - bot sẽ chỉ sử dụng tài khoản 1, 4 và 6
+    EXACT_ACCOUNTS_TO_USE: []
+    
+    SHUFFLE_WALLETS: true  # xáo trộn thứ tự ví
+
+    # thời gian tạm dừng giữa các lần thử
+    PAUSE_BETWEEN_ATTEMPTS: [3, 10]
+    
+    # thời gian tạm dừng giữa các lần hoán đổi
+    PAUSE_BETWEEN_SWAPS: [3, 10]
+    
+    # thời gian tạm dừng (giây) giữa các tài khoản
+    RANDOM_PAUSE_BETWEEN_ACCOUNTS: [3, 10]
+    
+    # thời gian tạm dừng (giây) giữa các hành động
+    RANDOM_PAUSE_BETWEEN_ACTIONS: [3, 10]
+    
+    # thời gian tạm dừng ngẫu nhiên trước khi bắt đầu mỗi tài khoản
+    # để đảm bảo rằng tất cả tài khoản sẽ bắt đầu vào các thời điểm khác nhau
+    RANDOM_INITIALIZATION_PAUSE: [5, 30]
+    
+    SEND_TELEGRAM_LOGS: true  # gửi nhật ký qua Telegram
+    # mã token bot Telegram
+    TELEGRAM_BOT_TOKEN: "8187013135:AAGYxndkDYO6pk4bW3G0if4t2oOTYGmuvfo"
+    # danh sách ID người dùng Telegram, vào https://web.telegram.org/k/#@myidbot để lấy ID của bạn
+    TELEGRAM_USERS_IDS: [xxxx]
+
+    # thời gian chờ xác nhận giao dịch (giây)
+    WAIT_FOR_TRANSACTION_CONFIRMATION_IN_SECONDS: 120
+
+FLOW:
+    # nếu nhiệm vụ từ cơ sở dữ liệu thất bại, bot sẽ bỏ qua
+    # nếu false, bot sẽ dừng và hiển thị lỗi
+    SKIP_FAILED_TASKS: true
+
+
+FAUCET:
+   
+    SOLVIUM_API_KEY: xxxxxxxxxxxxxxxxxxxxxx
+
+    USE_CAPSOLVER: true
+    CAPSOLVER_API_KEY: CAP-xxxxx
+RPCS:
+    MEGAETH: ["https://carrot.megaeth.com/rpc"]
+
+
+OTHERS:
+    SKIP_SSL_VERIFICATION: true  # bỏ qua xác minh SSL
+    USE_PROXY_FOR_RPC: true  # sử dụng proxy cho RPC
+    ENABLE_BROWSER_DASHBOARD: true  # bật bảng điều khiển trình duyệt
+
+SWAPS:
+    BEBOP:
+        BALANCE_PERCENTAGE_TO_SWAP: [5, 10]  # phần trăm số dư để hoán đổi
+        SWAP_ALL_TO_ETH: true  # hoán đổi tất cả sang ETH
+
+    GTE:
+        BALANCE_PERCENTAGE_TO_SWAP: [5, 10]
+        SWAP_ALL_TO_ETH: true
+        SWAPS_AMOUNT: [3, 5]  # số lượng hoán đổi
+
+STAKINGS:
+    TEKO_FINANCE:
+        # xác suất mint token
+        CHANCE_FOR_MINT_TOKENS: 50
+        # stake token, không phải ETH
+        BALANCE_PERCENTAGE_TO_STAKE: [5, 10]
+
+        UNSTAKE: true  # rút stake
+
+
+MINTS:
+    XL_MEME:
+        # phần trăm số dư ETH để mua token meme
+        BALANCE_PERCENTAGE_TO_BUY: [2, 5]
+        # hợp đồng của token meme để mua
+        CONTRACTS_TO_BUY: []
+
+    OMNIHUB:
+        # giá tối đa của NFT để mint
+        MAX_PRICE_TO_MINT: 0.00011
+
+    RAINMAKR:
+        # số lượng ETH để mua token meme.
+        # TỐI THIỂU LÀ 0.00013
+        AMOUNT_OF_ETH_TO_BUY: [0.00013, 0.00015]
+        # hợp đồng của token meme để mua. nếu để trống, bot sẽ mua token ngẫu nhiên
+        CONTRACTS_TO_BUY: []
+
+
+CRUSTY_SWAP:
+    NETWORKS_TO_REFUEL_FROM: ["Arbitrum", "Optimism", "Base"]  # mạng để nạp lại
+    AMOUNT_TO_REFUEL: [0.0001, 0.00015]  # số lượng để nạp lại
+    MINIMUM_BALANCE_TO_REFUEL: 99999  # số dư tối thiểu để nạp lại
+    WAIT_FOR_FUNDS_TO_ARRIVE: true  # chờ tiền đến
+    MAX_WAIT_TIME: 999999  # thời gian chờ tối đa (giây)
+    BRIDGE_ALL: false  # chuyển tất cả
+    BRIDGE_ALL_MAX_AMOUNT: 0.01  # số lượng tối đa để chuyển
+
+# --------------------------- #
+# PHẦN SÀN GIAO DỊCH
+# --------------------------- #
+EXCHANGES:
+    name: "OKX"  # Hỗ trợ: "OKX", "BITGET"
+    apiKey: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    secretKey: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    passphrase: 'xxxxxxx'  
+    withdrawals:
+        - currency: "ETH"  # CHỈ ETH
+          networks: ["Arbitrum", "Optimism"]  # ["Arbitrum", "Base", "Optimism"]
+          min_amount: 0.0003  # số lượng tối thiểu
+          max_amount: 0.0004  # số lượng tối đa
+          max_balance: 0.005  # số dư tối đa
+          wait_for_funds: true  # chờ tiền đến
+          max_wait_time: 99999  # thời gian chờ tối đa (giây)
+          retries: 3  # số lần thử lại
