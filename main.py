@@ -42,7 +42,7 @@ def configuration():
 
     log_format = (
         "<light-blue>[</light-blue><yellow>{extra[vn_time]}</yellow> | <yellow>{extra[vn_day]}</yellow><light-blue>]</light-blue> "
-        "<magenta>[ Crazyscholar x 0G Lab ]</magenta> | "
+        "<magenta>[ Crazyscholar x MegaETH ]</magenta> | "
         "<level>{level: <8}</level> | "
         "<cyan>{file}:{line}</cyan> | "
         "<level>{message}</level>"
